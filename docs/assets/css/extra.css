@@ -59,6 +59,15 @@
     color: #02d3b8 !important;
 }
 
+[data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a {
+    color: #000000 !important;
+    font-weight: bold;
+}
+
+[data-md-color-scheme="slate"] .phalcon-blog__sponsors-items a:hover {
+    color: #000000 !important;
+}
+
 /* Releases page table */
 .version-th-center, .version-td-center {
     text-align: center;
