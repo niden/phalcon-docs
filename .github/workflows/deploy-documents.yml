@@ -1,3 +1,6 @@
+# Workflow inspiration and adaptation came from Andruino-Cli
+# https://github.com/arduino/arduino-cli/blob/master/.github/workflows/deploy-cobra-mkdocs-versioned-poetry.yml
+
 name: Deploy Documents 5.4
 
 env:
@@ -6,7 +9,7 @@ env:
 on:
   push:
     branches:
-      # Branch to base "dev" website on. Set in siteversion.py also.
+      # Branch to base "dev" website on.
       - master
       # Release branches have names like 0.8.x, 0.9.x, ...
       - "[0-9]+.[0-9]+.x"
@@ -50,37 +53,56 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-#      - name: Create all generated documentation content
-#        run: mkdocs build
-#
+      - name: Get sponsors and fanart
+        run: |
+          wget -O docs/assets/sponsors.md \
+            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/sponsors-fragment.html
+          wget -O overrides/fanart.md \
+            https://raw.githubusercontent.com/phalcon/assets/master/phalcon/fanart-fragment.html
+
+      - name: Update NFR list
+        run: |
+          python ./update-nfr.py
+
       - name: Determine versioning parameters
         id: determine-versioning
         run: |
           # Read the first line from the VERSION file
           LINE=$(head -n 1 ./VERSION)
-          
+
           # Extract version and alias using parameter expansion
           VERSION="${LINE%%|*}"
           ALIAS="${LINE#*|}"
-          
+
           # Print the extracted values for verification
           echo "Version: $VERSION"
           echo "Alias: $ALIAS"
-          
+
           echo "PH_DOCS_VERSION=$VERSION" >> $GITHUB_ENV
           echo "PH_DOCS_ALIAS=$ALIAS" >> $GITHUB_ENV
 
       - name: Deploy
         if: ${{ env.PH_DOCS_VERSION }} != null
         run: |
-          # Publishing implies creating a git commit on the production branch, 
-          # we let @phalconbot own these commits.
+          # Publishing implies creating a git commit on the production branch,
+          # We will need to create a user for this at some point
+          echo "Deploying with Mike"
           git config user.name niden
           git config user.email nikos@niden.net
-          git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
+          git fetch --no-tags --prune --depth=1 origin +refs/heads/gh-pages:refs/remotes/origin/gh-pages
           mike deploy \
             --update-aliases \
-            --branch production \
+            --alias-type=redirect \
             --push \
             ${{ env.PH_DOCS_VERSION }} \
             ${{ env.PH_DOCS_ALIAS }}
+          echo "Deployed"
+
+#          git fetch --no-tags --prune --depth=1 origin +refs/heads/production:refs/remotes/origin/production
+#          mike deploy \
+#            --update-aliases \
+#            --alias-type=redirect \
+##            --branch production \
+#            --push \
+#            ${{ env.PH_DOCS_VERSION }} \
+#            ${{ env.PH_DOCS_ALIAS }}

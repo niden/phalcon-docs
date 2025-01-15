@@ -176,7 +176,6 @@ plugins:
         'en/index.md': introduction.md
         'en/installation.md': installation.md
         'en/introduction.md': introduction.md
-        'en/latest/index.md': introduction.md
         'en/logger.md': logger.md
         'en/mvc.md': mvc.md
         'en/mvc-url.md': mvc-url.md
@@ -221,7 +220,6 @@ plugins:
 # Additional configuration
 extra:
   version:
-    default: 5.4.0
     provider: mike
   analytics:
     provider: google
@@ -296,31 +294,31 @@ nav:
   - Home:
       - Introduction: introduction.md
       - Changelog:
-        - Current Version: https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG-5.0.md
-        - Releases: releases.md
-        - How to upgrade: upgrade.md
+          - Current Version: https://github.com/phalcon/cphalcon/blob/5.0.x/CHANGELOG-5.0.md
+          - Releases: releases.md
+          - How to upgrade: upgrade.md
       - Contributing:
-        - Contributions: contributions.md
-        - Asking a question: https://phalcon.io/discussions
-        - Requesting a change: new-feature-request.md
-        - Issuing a Pull Request: new-pull-request.md
+          - Contributions: contributions.md
+          - Asking a question: https://phalcon.io/discussions
+          - Requesting a change: new-feature-request.md
+          - Issuing a Pull Request: new-pull-request.md
       - Guides:
-        - Backtrace Generation: generating-backtrace.md
-        - Reproducible Tests: reproducible-tests.md
-        - Testing environment: testing-environment.md
-        - Coding Standard: coding-standard.md
+          - Backtrace Generation: generating-backtrace.md
+          - Reproducible Tests: reproducible-tests.md
+          - Testing environment: testing-environment.md
+          - Coding Standard: coding-standard.md
       - Sponsoring: sponsors.md
   - Getting Started:
       - Installation: installation.md
       - Webserver Setup: webserver-setup.md
       - Environments:
-        - Devilbox: environments-devilbox.md
-        - Nanobox: environments-nanobox.md
+          - Devilbox: environments-devilbox.md
+          - Nanobox: environments-nanobox.md
       - Development Tools:
-        - Devtools: devtools.md
-        - Debug: support-debug.md
-        - Migrations: db-migrations.md
-        - Unit Testing: unit-testing.md
+          - Devtools: devtools.md
+          - Debug: support-debug.md
+          - Migrations: db-migrations.md
+          - Unit Testing: unit-testing.md
       - Tutorials:
           - Basic: tutorial-basic.md
           - Invo: tutorial-invo.md
@@ -335,7 +333,6 @@ nav:
       - DI Container: di.md
       - MVC: mvc.md
       - Namespaces: namespaces.md
-      - API Index: api/index.md
   - Database:
       - Layer: db-layer.md
       - PHQL: db-phql.md
@@ -357,11 +354,11 @@ nav:
       - Forms: forms.md
       - Image: image.md
       - HTML:
-        - Attributes: html-attributes.md
-        - Breadcrumbs: html-breadcrumbs.md
-        - Escaper: html-escaper.md
-        - Link: html-link.md
-        - Tag Factory: html-tagfactory.md
+          - Attributes: html-attributes.md
+          - Breadcrumbs: html-breadcrumbs.md
+          - Escaper: html-escaper.md
+          - Link: html-link.md
+          - Tag Factory: html-tagfactory.md
       - Tag (legacy): tag.md
       - View: views.md
       - Volt: volt.md
@@ -383,7 +380,7 @@ nav:
       - Loader: autoload.md
       - Logger: logger.md
       - HTTP:
-          - Cookies: response/#cookies
+          - Cookies: response#cookies
           - Request: request.md
           - Response: response.md
       - i18n:
@@ -401,6 +398,7 @@ nav:
           - Helper: support-helper.md
           - Registry: support-registry.md
           - Version: support-version.md
+  - API: api/index.md
   - Discussions: https://github.com/orgs/phalcon/discussions
   - Discussions(v6): https://github.com/phalcon/phalcon/discussions
   - Blog: https://blog.phalcon.io/
